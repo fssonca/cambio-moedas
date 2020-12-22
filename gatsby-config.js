@@ -2,5 +2,5 @@ module.exports = {
   siteMetadata: {
     title: "Cambio Moedas",
   },
-  plugins: [],
+  plugins: [ `gatsby-plugin-postcss`],
 };

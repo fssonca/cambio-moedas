@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -16,8 +16,12 @@
   },
   "license": "0BSD",
   "dependencies": {
+    "autoprefixer": "^10.1.0",
     "gatsby": "^2.26.1",
+    "gatsby-plugin-postcss": "^3.4.0",
+    "postcss": "^8.2.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "tailwindcss": "^2.0.2"
   }
 }
