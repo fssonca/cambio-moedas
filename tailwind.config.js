@@ -8,14 +8,12 @@ module.exports = {
         serif: ["Merriweather", ...defaultTheme.fontFamily.serif],
         sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
       },
-      backgroundColor: {
-        primary: "var(--color-bg-primary)",
-        secondary: "var(--color-bg-secondary)",
-      },
-      textColor: {
-        accent: "var(--color-text-accent)",
-        primary: "var(--color-text-primary)",
-        secondary: "var(--color-text-secondary)",
+      colors: {
+        primaryBG: "var(--color-bg-primary)",
+        secondaryBG: "var(--color-bg-secondary)",
+        primaryTXT: "var(--color-text-primary)",
+        secondaryTXT: "var(--color-text-secondary)",
+        accentTXT: "var(--color-text-accent)",
       },
     },
   },

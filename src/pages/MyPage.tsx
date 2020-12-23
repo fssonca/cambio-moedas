@@ -1,18 +1,28 @@
-import * as React from 'react';
-import { useTheme, Theme } from './ThemeContext';
+// exampleComponent.js
+import React, { useContext } from "react";
+import { Store } from "../store";
 
-const MyPage = () => {
-  const { theme, setTheme } = useTheme();
-  console.log(theme);
+const MyPage: React.FC = () => {
+  const globalState = useContext(Store);
+  const { dispatch } = globalState;
+  const { theme } = globalState.state;
+
+  const setTheme = () => {
+    const t = theme !== "light" ? "LIGHT" : "DARK";
+    dispatch({ type: t });
+  };
 
   return (
-    <div>
-      <button onClick={() => setTheme(Theme.Dark)}>
-        switch to dark theme
-      </button>
-        my page
+    <div
+      className={theme === "light" ? "theme-light" : "theme-dark"}
+      onClick={() => setTheme()}
+    >
+      <div className="bg-primaryBG transition-all	">
+        <h1 className="text-primaryTXT">Câmbio de moedas</h1>
+        <h1 className="text-primaryTXT">Theme: {theme}</h1>
       </div>
-  )
-}
+    </div>
+  );
+};
 
 export default MyPage;
