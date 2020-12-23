@@ -17,7 +17,7 @@ const MyPage: React.FC = () => {
       className={theme === "light" ? "theme-light" : "theme-dark"}
       onClick={() => setTheme()}
     >
-      <div className="bg-primaryBG transition-all	">
+      <div className="bg-primaryBG transition-all h-full	w-full">
         <h1 className="text-primaryTXT">Câmbio de moedas</h1>
         <h1 className="text-primaryTXT">Theme: {theme}</h1>
       </div>

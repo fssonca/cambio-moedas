@@ -19,6 +19,9 @@
 }
 
 :root {
+height:100%;
+width: 100%;
+padding:0px;
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #edf2f7;
   --color-text-primary: #2d3748;
