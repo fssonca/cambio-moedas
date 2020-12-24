@@ -1,6 +1,9 @@
 // exampleComponent.js
 import React, { useContext } from "react";
 import { Store } from "../store";
+import InputValues from "./InputValues"
+import Modal from "./ModalCurrencies"
+import SwitchButton from "./SwitchButton"
 
 const MyPage: React.FC = () => {
   const globalState = useContext(Store);
@@ -15,11 +18,12 @@ const MyPage: React.FC = () => {
   return (
     <div
       className={theme === "light" ? "theme-light" : "theme-dark"}
-      onClick={() => setTheme()}
+    
     >
-      <div className="bg-primaryBG transition-all h-full	w-full">
-        <h1 className="text-primaryTXT">Câmbio de moedas</h1>
-        <h1 className="text-primaryTXT">Theme: {theme}</h1>
+      <div className="bg-primaryBG transition-all h-screen	w-screen justify-center	flex">
+        <SwitchButton/>
+        <Modal/>
+       <InputValues/>
       </div>
     </div>
   );
