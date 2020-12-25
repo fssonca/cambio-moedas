@@ -4,6 +4,7 @@ interface IState {
   theme: string;
   modalOpen: boolean;
   currency: string;
+  toBRL: boolean;
 }
 
 type IAction = {
@@ -33,13 +34,20 @@ function reducer(state: IState, action: IAction): IState {
     case "CAD":
     case "BTC":
       return { ...state, currency: action.type };
+    case "FROM_BRL":
+      return { ...state, toBRL: true };
+    case "TO_BRL":
+      return { ...state, toBRL: false };
   }
+  
+  return  state
 }
 
 const initialState: IState = {
   theme: "dark",
   modalOpen: false,
   currency: "USD",
+  toBRL: false,
 };
 
 const StateProvider = ({ children }) => {
