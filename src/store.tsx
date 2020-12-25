@@ -3,6 +3,7 @@ import React, { createContext, useReducer } from "react";
 interface IState {
   theme: string;
   modalOpen: boolean;
+  currency: string;
 }
 
 type IAction = {
@@ -21,15 +22,25 @@ function reducer(state: IState, action: IAction): IState {
     case "DARK":
       return { ...state, theme: "dark" };
     case "LIGHT":
-      return {...state, theme: "light" };
+      return { ...state, theme: "light" };
     case "OPENMODAL":
-      return {...state, modalOpen: true };
+      return { ...state, modalOpen: true };
     case "CLOSEMODAL":
-      return {...state, modalOpen: false };
+      return { ...state, modalOpen: false };
+    case "USD":
+    case "EUR":
+    case "GBP":
+    case "CAD":
+    case "BTC":
+      return { ...state, currency: action.type };
   }
 }
 
-const initialState: IState = { theme: "dark", modalOpen:false };
+const initialState: IState = {
+  theme: "dark",
+  modalOpen: false,
+  currency: "USD",
+};
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -39,4 +50,4 @@ const StateProvider = ({ children }) => {
   );
 };
 
-export {Store, StateProvider} ;
+export { Store, StateProvider };
