@@ -65,7 +65,7 @@ const InputValues: React.FC = () => {
   };
 
   return (
-    <div className="border-2 border-primaryTXT h-auto w-full max-w-screen-lg flex-row flex">
+    <div className="border-2 border-primaryTXT  w-full max-w-screen-lg flex-row flex">
       <div className="h-20 w-72	border border-primaryTXT">
         <span className="text-primaryTXT">Converter</span>
         <input
