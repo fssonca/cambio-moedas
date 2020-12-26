@@ -3,7 +3,9 @@ import React, { useContext } from "react";
 import { Store } from "../store";
 
 function formatterMoney(v: number, currency: string) {
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency }).format( v );
+  return new Intl.NumberFormat("pt-BR", { style: "currency", currency }).format(
+    v
+  );
 }
 
 const ResultConvert: React.FC = () => {
@@ -17,7 +19,10 @@ const ResultConvert: React.FC = () => {
   };
 
   const converted = (): string => {
-    const r: number = rates[currency].ask;
+    const { ask, bid } = rates[currency];
+    const rate = Math.min(ask, bid);
+
+    const r: number = rate;
     let t: number;
     if (toBRL) {
       t = value / r;

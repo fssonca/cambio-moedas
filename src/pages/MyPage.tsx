@@ -4,7 +4,8 @@ import { Store } from "../store";
 import InputValues from "./InputValues";
 import Modal from "./ModalCurrencies";
 import SwitchButton from "./SwitchButton";
-import ResultConvert from "./resultConvert"
+import ResultConvert from "./resultConvert";
+import Boxes from "./Boxes";
 
 const MyPage: React.FC = () => {
   const globalState = useContext(Store);
@@ -36,9 +37,15 @@ const MyPage: React.FC = () => {
     }
   });
 
+  let rate;
+  if (rates) {
+    const { ask, bid } = rates[currency];
+    rate = Math.min(ask, bid);
+  }
+
   return (
     <div className={theme === "light" ? "theme-light" : "theme-dark"}>
-      <div className="bg-primaryBG transition-all h-screen	w-screen 	flex flex-col items-center	">
+      <div className="bg-primaryBG transition-all h-screen	w-screen 	flex flex-col items-center p-2	">
         <SwitchButton />
         <Modal />
         <InputValues />
@@ -46,11 +53,11 @@ const MyPage: React.FC = () => {
         {rates ? (
           <div className="text-primaryTXT text-xs my-1	 flex flex-col">
             <span>
-              1 {currency} = {rates[currency].ask} BRL
+              1 {currency} = {rate} BRL
             </span>
             {currency !== "BTC" && (
               <span>
-                1 BRL = {(1 / rates[currency].ask).toFixed(4)} {currency}
+                1 BRL = {(1 / rate).toFixed(4)} {currency}
               </span>
             )}
           </div>
@@ -58,9 +65,8 @@ const MyPage: React.FC = () => {
           <div> - </div>
         )}
 
-<ResultConvert/>
-
-
+        <ResultConvert />
+        <Boxes />
       </div>
     </div>
   );
