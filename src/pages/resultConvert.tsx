@@ -20,11 +20,11 @@ const ResultConvert: React.FC = () => {
     const r: number = rates[currency].ask;
     let t: number;
     if (toBRL) {
-      t = value * r;
+      t = value / r;
       return formatterMoney(t, currency);
     }
 
-    t = value / r;
+    t = value * r;
     return formatterMoney(t, "BRL");
   };
 

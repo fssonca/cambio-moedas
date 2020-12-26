@@ -1,11 +1,11 @@
 // exampleComponent.js
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Store } from "../store";
 import { currencies, money } from "../components/arrayCurrencies";
 
 function Brl() {
   return (
-    <div  className="  h-10 w-full  text-right font-medium my-1.5   cursor-pointer flex items-center">
+    <div className="  h-10 w-full  text-right font-medium my-1.5   cursor-pointer flex items-center">
       <div className="h-9 w-9 border border-white">
         <img src={require(`../images/BRL.png`)} />
       </div>
@@ -59,9 +59,47 @@ const InputValues: React.FC = () => {
 
   const currency = currencies.find((x) => x.code === c);
 
+  const [txtUserValue, setTxtUserValue] = useState("");
+
   const switchOrigin = () => {
-    const t = toBRL ?  "TO_BRL" : "FROM_BRL";
+    const t = toBRL ? "TO_BRL" : "FROM_BRL";
     dispatch({ type: t });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const v = e.target.value;
+
+    const p = v.substr(-1);
+    if (p === "." || p === ",") {
+      // like Google does
+      // you cant have "," and "." in the same input, or theses multiple
+
+      const a = txtUserValue.indexOf(".");
+      const b = txtUserValue.indexOf(",");
+      if (a > -1 || b > -1) {
+        if (v.length > txtUserValue.length) return;
+      }
+    }
+
+    setTxtUserValue(v);
+    valida_num(v);
+  };
+
+  const valida_num = (v: string) => {
+    if (v !== "") {
+      let t = Number(v);
+
+      if (t) {
+        dispatch({ type: "VALUE_TO_CONVERT", payload: t });
+      } else {
+        if (v.indexOf(",") > -1) {
+          let x = v.replace(",", ".");
+          if (Number(x)) {
+            valida_num(x);
+          }
+        }
+      }
+    }
   };
 
   return (
@@ -70,7 +108,9 @@ const InputValues: React.FC = () => {
         <span className="text-primaryTXT">Converter</span>
         <input
           type="text"
-          className="border border-red-500 h-10 w-full p-2 text-xl	 text-right font-medium my-1.5	"
+          value={txtUserValue}
+          onChange={handleChange}
+          className="border border-red-500 h-10 w-full p-2 text-xl	 text-right font-medium my-1.5"
         />
       </div>
 
@@ -79,28 +119,39 @@ const InputValues: React.FC = () => {
         {toBRL ? Brl() : ForeignMoney(currency, dispatch)}
       </div>
 
-      <div className="h-20 w-20 flex items-center justify-center	cursor-pointer"  onClick={()=>switchOrigin()}>
-      <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="25pt" height="18.875pt"
- className="fill-current text-primaryTXT"
- viewBox="0 0 400.000000 302.000000"
- preserveAspectRatio="xMidYMid meet">
- 
-<g transform="translate(0.000000,302.000000) scale(0.100000,-0.100000)"
-  stroke="none">
-<path d="M2740 2780 l0 -240 -1370 0 -1370 0 0 -275 0 -275 1370 0 1370 0 2
+      <div
+        className="h-20 w-20 flex items-center justify-center	cursor-pointer"
+        onClick={() => switchOrigin()}
+      >
+        <svg
+          version="1.0"
+          xmlns="http://www.w3.org/2000/svg"
+          width="25pt"
+          height="18.875pt"
+          className="fill-current text-primaryTXT"
+          viewBox="0 0 400.000000 302.000000"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <g
+            transform="translate(0.000000,302.000000) scale(0.100000,-0.100000)"
+            stroke="none"
+          >
+            <path
+              d="M2740 2780 l0 -240 -1370 0 -1370 0 0 -275 0 -275 1370 0 1370 0 2
 -243 3 -244 627 376 c345 207 627 381 627 386 0 9 -1236 755 -1252 755 -4 0
--7 -108 -7 -240z"/>
-<path d="M628 1140 c-345 -206 -626 -379 -624 -385 2 -10 1234 -755 1248 -755
+-7 -108 -7 -240z"
+            />
+            <path
+              d="M628 1140 c-345 -206 -626 -379 -624 -385 2 -10 1234 -755 1248 -755
 4 0 8 108 8 240 l0 240 1370 0 1370 0 0 275 0 275 -1370 0 -1370 0 -2 243 -3
-243 -627 -376z"/>
-</g>
-</svg>
-
+243 -627 -376z"
+            />
+          </g>
+        </svg>
       </div>
 
       <div className="h-20 w-56	border border-primaryTXT px-2">
-      <span className="text-primaryTXT ">PARA</span>
+        <span className="text-primaryTXT ">PARA</span>
 
         {toBRL ? ForeignMoney(currency, dispatch) : Brl()}
       </div>
