@@ -1,5 +1,5 @@
 # Câmbio de moedas
-Conversor das principais moedas estrageiras para o Real (R$)
+Conversor das principais moedas estrageiras para o Real (R$).
 
 ## Descrição
 Uma ferramenta em formato SPA que faz a conversão das principais moedas mundiais para o Real (R$) e vice-versa, e calcula o imposto IOF sobre o montante, além da dedução IR - no caso de receber no Brasil remessas em moeda estrangeira, considerando-se uma taxa de 20%.
