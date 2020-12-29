@@ -2,7 +2,7 @@ import * as React from "react";
 import "../css/index.css";
 
 import { StateProvider } from "../store";
-import MyPage from "./MyPage";
+import MyPage from "./MyPage"
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 // exampleComponent.js
 import React, { useContext, useState } from "react";
 import { Store } from "../store";
-import { currencies, money } from "../components/arrayCurrencies";
+import { currencies, money } from "./arrayCurrencies";
 
 function Brl() {
   return (
@@ -103,24 +103,27 @@ const InputValues: React.FC = () => {
   };
 
   return (
-    <div className="border-2 border-primaryTXT  w-full max-w-screen-lg flex-row flex">
-      <div className="h-20 w-72	border border-primaryTXT">
-        <span className="text-primaryTXT">Converter</span>
-        <input
-          type="text"
-          value={txtUserValue}
-          onChange={handleChange}
-          className="border border-red-500 h-10 w-full p-2 text-xl	 text-right font-medium my-1.5"
-        />
+    <div className="border border-primaryTXT  w-full max-w-screen-lg flex sm:flex-col">
+      <div className="h-20 border bg-yellow-500 border-primaryTXT   sm:w-1/3  w-full ">
+      <span className="text-primaryTXT">Converter</span>
+<input
+  type="text"
+  value={txtUserValue}
+  onChange={handleChange}
+  className="border border-red-500 h-10 w-full p-2 text-xl	 text-right font-medium my-1.5"
+/>
       </div>
 
-      <div className="h-20 w-56	border border-primaryTXT px-2">
+
+<div className="h-20  bg-green-300  sm:w-2/3 w-full">
+
+<div className="h-20 	border border-primaryTXT px-2">
         <span className="text-primaryTXT  ">DE</span>
         {toBRL ? Brl() : ForeignMoney(currency, dispatch)}
       </div>
 
       <div
-        className="h-20 w-20 flex items-center justify-center	cursor-pointer"
+        className="h-20 flex items-center justify-center	cursor-pointer"
         onClick={() => switchOrigin()}
       >
         <svg
@@ -146,16 +149,18 @@ const InputValues: React.FC = () => {
 4 0 8 108 8 240 l0 240 1370 0 1370 0 0 275 0 275 -1370 0 -1370 0 -2 243 -3
 243 -627 -376z"
             />
-          </g>
+          </g>  
         </svg>
       </div>
 
-      <div className="h-20 w-56	border border-primaryTXT px-2">
+      <div className="h-20 	border border-primaryTXT px-2">
         <span className="text-primaryTXT ">PARA</span>
 
         {toBRL ? ForeignMoney(currency, dispatch) : Brl()}
       </div>
-    </div>
+</div>
+
+</div>
   );
 };
 

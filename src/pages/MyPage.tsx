@@ -1,11 +1,11 @@
 // exampleComponent.js
 import React, { useContext, useEffect, useState } from "react";
 import { Store } from "../store";
-import InputValues from "./InputValues";
-import Modal from "./ModalCurrencies";
-import SwitchButton from "./SwitchButton";
-import ResultConvert from "./resultConvert";
-import Boxes from "./Boxes";
+import InputValues from "../components/InputValues";
+import Modal from "../components/ModalCurrencies";
+import SwitchButton from "../components/SwitchButton";
+import ResultConvert from "../components/resultConvert";
+import Boxes from "../components/Boxes";
 
 const MyPage: React.FC = () => {
   const globalState = useContext(Store);

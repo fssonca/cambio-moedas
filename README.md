@@ -1,11 +1,11 @@
-*ENGLISH*
-# Currency conversor
-Conversor of the most importants currencies for the Brazilian Real (BRL - R$)
+*#ENGLISH*
+# Currency Converter
+Converter of the most important currencies to the Brazilian Real (BRL - R$)
 
 ## Description 
 A tool in SPA format that converts the main world currencies to Brazilian Real (R$) and vice versa, and calculates the IOF (financial transaction tax in Brazil) on the amount, in addition to the IR (income tax) deduction - in the case of receiving remittances in foreign currency in Brazil, considering a rate of 20%.
 
-*PORTUGUÊS*
+*#PORTUGUÊS*
 # Câmbio de moedas
 Conversor das principais moedas estrageiras para o Real (BRL - R$).
 
