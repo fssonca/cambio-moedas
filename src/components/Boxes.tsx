@@ -30,8 +30,8 @@ const Boxes: React.FC = () => {
   }
 
   return (
-    <div className="  h-auto    w-full my-2 max-w-screen-lg flex-row flex">
-      <div className="border h-64 border-primaryTXT bg-yellow-300  w-2/4 my-2  flex-col flex p-2">
+    <div className="  h-auto    w-full my-2 max-w-screen-lg flex-col flex sm:flex-row">
+      <div className="border h-64 border-primaryTXT bg-yellow-300  w-full sm:w-2/4 my-2  flex-col flex p-2">
         <div>
           <span className=" text-lg font-bold	"> ADQUIRIR </span>
           <span className=" text-xs "> ( ASK - preço do vendedor )</span>
@@ -59,7 +59,7 @@ const Boxes: React.FC = () => {
         </div>
       </div>
 
-      <div className="border h-64 border-primaryTXT bg-green-400 w-2/4	 my-2 p-2 ">
+      <div className="border h-64 border-primaryTXT bg-green-400  w-full sm:w-2/4	 my-2 p-2 ">
         <div>
           <span className=" text-lg font-bold	"> VENDER </span>
           <span className=" text-xs "> ( BID - oferta do comprador )</span>

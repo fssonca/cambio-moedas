@@ -18,11 +18,11 @@ const SwitchButton: React.FC = () => {
         aria-label="Activate Light Mode"
         title="Activate Light Mode"
         onClick={() => setTheme()}
-        className="hidden sm:block hover:text-accent transition duration-150 rotate-180 focus:outline-none"
+        className="block hover:text-accent transition duration-150 rotate-180 focus:outline-none"
       >
         <svg
           aria-hidden="true"
-          className="w-6 h-6 md:w-5 md:h-5 fill-current text-primaryTXT"
+          className="w-6 h-6  fill-current text-primaryTXT"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
         >
