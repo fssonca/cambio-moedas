@@ -16,7 +16,6 @@ Uma ferramenta em formato SPA que faz a conversão das principais moedas mundiai
 * Typescript
 * Tailwind CSS
 * ReactJS
-* PostCSS 
 * Gatsby
 * Autoprefixer
 
