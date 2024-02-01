@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/index.css";
 import { StateProvider } from "../store";
 
 const Layout = ({ children }) => {
