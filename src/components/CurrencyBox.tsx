@@ -46,25 +46,25 @@ const CurrencyBox: React.FC<CurrencyBoxProps> = ({ type }) => {
         <CurrencyInfo label="" value={formatted.brlValueNonTaxed} />
 
         <div className="p-2 text-sm bg-primaryBG flex flex-col text-primaryTXT">
-          <div className="text-lg mb-2">Imposto de Renda (20%)</div>
+          <div className="text-lg mb-2">Income Tax (20%)</div>
           <CurrencyDetailsRow
-            label="Bruto:"
+            label="Gross:"
             value={formatted.foreignCurrencyValue}
             labelStyle="text-gray-400"
           />
           <CurrencyDetailsRow
-            label="Líq:"
+            label="Net:"
             value={formatted.foreignCurrencyValueTaxed}
             labelStyle="text-primaryTXT"
           />
           <div className="my-2" /> {/* Spacer */}
           <CurrencyDetailsRow
-            label="Bruto:"
+            label="Gross:"
             value={formatted.brlValueNonTaxed}
             labelStyle="text-gray-400"
           />
           <CurrencyDetailsRow
-            label="Líq:"
+            label="Net:"
             value={formatted.brlValueTaxed}
             labelStyle="text-primaryTXT"
           />

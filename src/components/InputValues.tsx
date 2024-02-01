@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Store } from "../store";
-import { currencies } from "./arrayCurrencies";
 import { Money } from "../types";
 import Brl from "./Brl";
 import ForeignMoney from "./ForeignMoney";
 import SwitchCurrencyButton from "./SwitchCurrencyButton";
+import { currencies } from "../utils/constants";
 
 const InputValues: React.FC = () => {
   const {
@@ -47,7 +47,7 @@ const InputValues: React.FC = () => {
   return (
     <div className="w-full max-w-screen-lg flex flex-col sm:flex-row">
       <div className="h-20   sm:w-1/3  w-full ">
-        <span className="text-primaryTXT">Converter</span>
+        <span className="text-primaryTXT">To convert</span>
         <input
           type="text"
           value={txtUserValue}
@@ -58,7 +58,7 @@ const InputValues: React.FC = () => {
 
       <div className="h-20 sm:w-2/3 w-full  grid grid-cols-12 ">
         <div className="h-20 px-2 col-span-5">
-          <span className="text-primaryTXT">DE</span>
+          <span className="text-primaryTXT">FROM</span>
           {toBRL ? (
             <Brl />
           ) : (
@@ -69,7 +69,7 @@ const InputValues: React.FC = () => {
         <SwitchCurrencyButton switchOrigin={switchOrigin} />
 
         <div className="h-20 px-2 col-span-5">
-          <span className="text-primaryTXT ">PARA</span>
+          <span className="text-primaryTXT ">TO</span>
 
           {toBRL ? (
             <ForeignMoney currency={currency as Money} onOpenModal={onOpenModal} />

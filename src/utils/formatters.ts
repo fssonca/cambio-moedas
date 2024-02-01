@@ -13,5 +13,8 @@ export const formatterDate = (timestamp: number): string => {
 };
 
 export const formatCurrency = (value: number, currency: string) => {
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency }).format(value);
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+  }).format(value);
 };

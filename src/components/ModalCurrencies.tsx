@@ -1,7 +1,7 @@
 import React, { useContext, useCallback } from "react";
 import { Store } from "../store";
-import { currencies } from "./arrayCurrencies";
 import { Money } from "../types";
+import { currencies } from "../utils/constants";
 
 const Modal: React.FC = () => {
   const { dispatch, state: { modalOpen } } = useContext(Store);

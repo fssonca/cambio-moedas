@@ -21,7 +21,7 @@ const Brl = React.memo(() => {
       </div>
       <div className="h-10 flex flex-col justify-start p-0 pl-2 text-primaryTXT">
         <div className="text-base text-left">BRL</div>
-        <div className="text-xs	text-left">Real Brasileiro</div>
+        <div className="text-xs	text-left">Brazilian Real</div>
       </div>
     </div>
   );

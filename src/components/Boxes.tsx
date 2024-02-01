@@ -3,14 +3,14 @@ import CurrencyBox from './CurrencyBox';
 
 const Boxes = () => {
   const buyType = {
-    label: 'ADQUIRIR',
-    description: 'ASK - preço do vendedor',
+    label: 'PURCHASE',
+    description: "ASK - seller's price",
     color: 'yellow-300'
   };
 
   const sellType = {
-    label: 'VENDER',
-    description: 'BID - oferta do comprador',
+    label: 'SELL',
+    description: "BID - buyer's offer",
     color: 'green-400'
   };
 

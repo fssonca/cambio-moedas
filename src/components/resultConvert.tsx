@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { Store } from "../store";
-
-function formatCurrency(v: number, currency: string) {
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency }).format(v);
-}
+import { formatCurrency } from "../utils/formatters";
 
 const ResultConvert: React.FC = () => {
   const {

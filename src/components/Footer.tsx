@@ -11,11 +11,14 @@ const Footer: React.FC = () => {
 
   return (
     <div className="h-16 w-full mt-6 text-sm text-primaryTXT text-center flex flex-col">
-      <span>Valor atualizado em {formatterDate(rates[currency].timestamp)}</span>
+      <span>Value updated at {formatterDate(rates[currency].timestamp)}</span>
       <div className="flex flex-row text-center justify-center">
         <span className="">
-          Página do projeto:
-          <a href="https://github.com/fssonca/cambio-moedas" className="underline italic ml-2">
+          Project page:
+          <a
+            href="https://github.com/fssonca/cambio-moedas"
+            className="underline italic ml-2"
+          >
             https://github.com/fssonca/cambio-moedas
           </a>
         </span>
