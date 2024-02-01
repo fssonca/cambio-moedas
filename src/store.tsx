@@ -1,38 +1,20 @@
 import React, { createContext, useReducer } from "react";
+import { Action, ContextProps, State } from "./types";
 
-interface IState {
-  theme: string;
-  modalOpen: boolean;
-  currency: string;
-  toBRL: boolean;
-  rates: object;
-  value: number;
-}
+const Store = createContext({} as ContextProps);
 
-type IAction = {
-  type: string;
-  payload?: any;
-};
-
-interface IContextProps {
-  state: IState;
-  dispatch: ({ type, payload }: { type: string; payload?: any }) => void;
-}
-
-const Store = createContext({} as IContextProps);
-
-function reducer(state: IState, action: IAction): IState {
+function reducer(state: State, action: Action): State {
   switch (action.type) {
     case "DARK":
-      return { ...state, theme: "dark" };
+      return { ...state, theme: "DARK" };
 
     case "LIGHT":
-      return { ...state, theme: "light" };
+      return { ...state, theme: "LIGHT" };
 
-    case "OPENMODAL":
+    case "OPEN_MODAL":
       return { ...state, modalOpen: true };
 
-    case "CLOSEMODAL":
+    case "CLOSE_MODAL":
       return { ...state, modalOpen: false };
 
     case "USD":
@@ -58,8 +40,8 @@ function reducer(state: IState, action: IAction): IState {
   return state;
 }
 
-const initialState: IState = {
-  theme: "dark",
+const initialState: State = {
+  theme: "DARK",
   modalOpen: false,
   currency: "USD",
   toBRL: false,
@@ -70,9 +52,7 @@ const initialState: IState = {
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  return (
-    <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>
-  );
+  return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>;
 };
 
 export { Store, StateProvider };

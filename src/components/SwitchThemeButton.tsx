@@ -1,14 +1,13 @@
-// exampleComponent.js
 import React, { useContext } from "react";
 import { Store } from "../store";
 
-const SwitchButton: React.FC = () => {
+const SwitchThemeButton: React.FC = () => {
   const globalState = useContext(Store);
   const { dispatch } = globalState;
   const { theme } = globalState.state;
 
   const setTheme = () => {
-    const t = theme !== "light" ? "LIGHT" : "DARK";
+    const t = theme !== "LIGHT" ? "LIGHT" : "DARK";
     dispatch({ type: t });
   };
 
@@ -37,4 +36,4 @@ const SwitchButton: React.FC = () => {
   );
 };
 
-export default SwitchButton;
+export default SwitchThemeButton;

@@ -1,8 +1,6 @@
-export type money = {
-  code: string;
-  name: string;
-};
-export const currencies: money[] = [
+import { Money } from "../types";
+
+export const currencies: Money[] = [
   { code: "USD", name: "Dólar Americano" },
   { code: "EUR", name: "Euro" },
   { code: "GBP", name: "Libra Esterlina" },

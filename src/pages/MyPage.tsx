@@ -1,81 +1,42 @@
-// exampleComponent.js
-import React, { useContext, useEffect, useState } from "react";
-import { Store } from "../store";
+import React from "react";
 import InputValues from "../components/InputValues";
 import Modal from "../components/ModalCurrencies";
-import SwitchButton from "../components/SwitchButton";
+import SwitchThemeButton from "../components/SwitchThemeButton";
 import ResultConvert from "../components/resultConvert";
 import Footer from "../components/Footer";
 import Boxes from "../components/Boxes";
+import useCurrencyData from "../hooks/useCurrencyData";
 
 const MyPage: React.FC = () => {
-  const globalState = useContext(Store);
-  const { dispatch } = globalState;
-  
-  if(!globalState.state) return (<div></div>)
-  
-  const { theme, rates, currency } = globalState.state;
+  const { theme, rates, currency } = useCurrencyData();
 
-  const [load, setLoad] = useState(false);
+  if (!rates) return <div className="text-center m-5">Loading...</div>;
 
-  const currencyAPI = () => {
-    fetch(
-      "https://economia.awesomeapi.com.br/all/USD-BRL,EUR-BRL,BTC-BRL,CAD-BRL,GBP-BRL",
-      { cache: "no-cache" }
-    )
-      .then((response) => response.json())
-      .then(
-        (res) => {
-          dispatch({ type: "VALUES_CURRENCY", payload: res });
-          setLoad(true);
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-  };
-
-  useEffect(() => {
-    if (!load && !rates) {
-      currencyAPI();
-    }
-  });
-
-  let rate;
-  if (rates) {
-    const { ask, bid } = rates[currency];
-    rate = Math.min(ask, bid);
-  }
-
-  
+  const rate = rates && currency ? Math.min(rates[currency].ask, rates[currency].bid) : null;
 
   return (
-    <div className={theme === "light" ? "theme-light" : "theme-dark"}>
- 
-      <div className="bg-primaryBG transition-all h-full min-h-screen	 	w-screen 	flex flex-col items-center p-2	">
-      <SwitchButton />
-       
+    <div className={theme === "LIGHT" ? "theme-light" : "theme-dark"}>
+      <div className="bg-primaryBG transition-all h-full min-h-screen w-screen flex flex-col items-center p-2">
+        <SwitchThemeButton />
         <Modal />
         <InputValues />
 
-        {rates ? (
-          <div className="text-primaryTXT text-xs my-3 sm:my-1	 flex flex-col">
+        {rate && (
+          <div className="text-primaryTXT text-xs my-3 sm:my-1 flex flex-col">
             <span>
               1 {currency} = {rate} BRL
             </span>
-            {currency !== "BTC" && (
+            {currency !== "BTC" && rate !== null && (
               <span>
                 1 BRL = {(1 / rate).toFixed(4)} {currency}
               </span>
             )}
           </div>
-        ) : (
-          <div> - </div>
         )}
 
         <ResultConvert />
         <Boxes />
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );
