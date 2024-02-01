@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkcambio_moedas=self.webpackChunkcambio_moedas||[]).push([[691],{7200:function(e,a,n){n.r(a);var t=n(7294),u=n(4652),l=n(9165);a.default=function(){return t.createElement(u.X,null,t.createElement(l.default,null))}}}]);
-//# sourceMappingURL=component---src-pages-index-tsx-cbb321f93a15e1988f6a.js.map
